@@ -1,0 +1,593 @@
+\documentclass[parskip]{scrartcl}
+    \usepackage[margin=1mm,landscape,paperwidth={108.5cm},paperheight={24cm}]{geometry}
+    \usepackage{tikz}
+    \usetikzlibrary{shapes.multipart, calc}
+
+    \begin{document}
+\textbf{Lietotājs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Niks}
+\nodepart{three}  {Izveidots}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Draudzējas}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{Lietotājs1}
+\nodepart{two}  \underline{Lietotājs2}
+\nodepart{three}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Izstrādātājs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{Nosaukums}
+\nodepart{two}  {DibināšanasDatums}
+\nodepart{three}  {Apraksts}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Izplatītājs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{Nosaukums}
+\nodepart{two}  {DibināšanasDatums}
+\nodepart{three}  {Apraksts}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Spēle}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=8, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Versija}
+\nodepart{four}  {Cena}
+\nodepart{five}  {Akcija}
+\nodepart{six}  {IzdošanasDatums}
+\nodepart{seven}  {Izstrādātājs}
+\nodepart{eight}  {Izplatītājs}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.seven south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.eight south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Žanrs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=2, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{Nosaukums}
+\nodepart{two}  {Apraksts}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+
+\end{tikzpicture}
+\par\par
+\textbf{SpēleŽanrs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=2, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{SpēleID}
+\nodepart{two}  \underline{ŽanrsNosaukums}
+};
+
+
+\end{tikzpicture}
+\par\par
+\textbf{LietotājsSpēle}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=6, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  \underline{SpēleID}
+\nodepart{three}  {SpēlētāsStundas}
+\nodepart{four}  {IegūšanasDatums}
+\nodepart{five}  {irIecienīta}
+\nodepart{six}  {InstalētāVersija}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.six south);
+
+\end{tikzpicture}
+\par\par
+\textbf{LietotājaKategorija}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {LietotājsID}
+\nodepart{three}  {Nosaukums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.7) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.three north) -- ++(0,0.7) -| (dedi.one north);
+
+\end{tikzpicture}
+\par\par
+\textbf{LietotājaKategorijaSpēle}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=2, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsKategorijaID}
+\nodepart{two}  \underline{SpēleID}
+};
+
+
+\end{tikzpicture}
+\par\par
+\textbf{VēlmjuSaraksts}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  \underline{SpēleID}
+\nodepart{three}  {PievienošanasDatums}
+\nodepart{four}  {Secība}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.four south);
+
+\end{tikzpicture}
+\par\par
+\textbf{NorēķinuAdrese}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=7, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Valsts}
+\nodepart{three}  {Pilsēta}
+\nodepart{four}  {Iela}
+\nodepart{five}  {MājasNr}
+\nodepart{six}  {DzīvokļaNr}
+\nodepart{seven}  {PastaIndekss}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.seven south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Persona}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=7, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Vārds}
+\nodepart{three}  {Uzvārds}
+\nodepart{four}  {DzimšanasDatums}
+\nodepart{five}  {EPasts}
+\nodepart{six}  {Parole}
+\nodepart{seven}  {NorēķinuAdreseID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.seven south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Pirkums}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {LietotājsID}
+\nodepart{three}  {Datums}
+\nodepart{four}  {Summa}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Maksājums}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {MaksājumaMetode}
+\nodepart{three}  {KartesCipari}
+\nodepart{four}  {NorēķinuAdreseID}
+\nodepart{five}  {PirkumsID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par
+\textbf{PirkumaSpēle}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{PirkumsID}
+\nodepart{two}  \underline{SpēleID}
+\nodepart{three}  {Cena}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Recenzija}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=7, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {LietotājsID}
+\nodepart{three}  {SpēleID}
+\nodepart{four}  {Teksts}
+\nodepart{five}  {Vērtējums}
+\nodepart{six}  {Datums}
+\nodepart{seven}  {CONSTRAINT}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.seven south);
+\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.7) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.three north) -- ++(0,0.7) -| (dedi.one north);
+
+\end{tikzpicture}
+\par\par
+\textbf{Sasniegums}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Teksts}
+\nodepart{four}  {SpēleID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+
+\end{tikzpicture}
+\par\par
+\textbf{LietotājsSasniegums}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  \underline{SasniegumsID}
+\nodepart{three}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{MantasKlase}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Apraksts}
+\nodepart{four}  {SpēleID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.four north) -- ++(0,0.9) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.9) -| (dedi.one north);
+
+\end{tikzpicture}
+\par\par
+\textbf{Manta}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {ĪpašnieksID}
+\nodepart{three}  {MantasKlaseID}
+\nodepart{four}  {DotaisVārds}
+\nodepart{five}  {IzveidesDatums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par
+\textbf{MantasĪpašniekuVēsture}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  \underline{MantaID}
+\nodepart{three}  {DatumsLīdz}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Serveris}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {IPAddress}
+\nodepart{three}  {Port}
+\nodepart{four}  {Nosaukums}
+\nodepart{five}  {SpēleID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.7) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.three north) -- ++(0,0.7) -| (dedi.one north);
+
+\end{tikzpicture}
+\par\par
+\textbf{LietotājsSpēlē}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  {SpēleID}
+\nodepart{three}  {ServerisID}
+\nodepart{four}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Sarakste}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=3, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {IzveidesDatums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Ziņa}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {LietotājsID}
+\nodepart{three}  {SaraksteID}
+\nodepart{four}  {Teksts}
+\nodepart{five}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par
+\textbf{SarakstesDalībnieks}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=4, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{LietotājsID}
+\nodepart{two}  \underline{SaraksteID}
+\nodepart{three}  {PievienošanāsDatums}
+\nodepart{four}  {PēdējāLasītāZiņaID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.two south) -- ++(0,-0.5) -| (dedi.four south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Grupa}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Apraksts}
+\nodepart{four}  {IzveidesDatums}
+\nodepart{five}  {SaraksteID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Forums}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Apraksts}
+\nodepart{four}  {SpēleID}
+\nodepart{five}  {GrupaID}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Diskusija}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=6, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Nosaukums}
+\nodepart{three}  {Teksts}
+\nodepart{four}  {ForumsID}
+\nodepart{five}  {IzveidotājsID}
+\nodepart{six}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
+
+\end{tikzpicture}
+\par\par
+\textbf{Komentārs}
+\par
+\begin{tikzpicture}[my shape/.style={
+    rectangle split, rectangle split parts=#1, draw, anchor=center}]
+    \node (start) {};
+\node [my shape=5, rectangle split horizontal,name=dedi]
+{\nodepart{one}  \underline{ID}
+\nodepart{two}  {Teksts}
+\nodepart{three}  {DiskusijaID}
+\nodepart{four}  {LietotājsID}
+\nodepart{five}  {Datums}
+};
+
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
+\draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
+
+\end{tikzpicture}
+\par\par\end{document}
