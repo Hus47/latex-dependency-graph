@@ -29,7 +29,6 @@ def generate_latex_for_table(table, name):
 
     # Making LaTeX for arrows
     latex_arrows = ""
-    unique_key_counter = 0
     for i, col in enumerate(cols):
         # Draw arrows from primary keys to other non-primary key columns
         if any(col in pk for pk in table['primary keys']):
@@ -39,16 +38,20 @@ def generate_latex_for_table(table, name):
         # Draw arrows from unique keys to primary keys
         elif col in table['unique keys']:
             for pk_index in primary_key_indices:
-                latex_arrows += draw_latex_arrows(i+1, pk_index, 'north', 0.5+0.1*(cols.index(col)+1))
-
+                height = table['unique keys'].index(col)+1
+                height = height + height
+                print(height)
+                latex_arrows += draw_latex_arrows(i+1, pk_index, 'north', 0.5+0.1*height)
+        
     # Handling combination unique keys
     for unique_key in table['unique keys']:
         if isinstance(unique_key, list):  # If this unique key is a combination of columns
             for i in range(len(unique_key)):
-                height = cols.index(unique_key[0])+1
+                # determine height by the amount of unique keys in the table
+                height = table['unique keys'].index(unique_key)+1
+                height = height + height
                 for pk_index in primary_key_indices:
                     latex_arrows += draw_latex_arrows(cols.index(unique_key[i])+1, pk_index, 'north', 0.5+0.1*height)
-            unique_key_counter += 1
 
     # Combining everything
     latex_front = "\n\\textbf{" + name + "}\n\\par" + """\n\\begin{tikzpicture}[my shape/.style={
@@ -67,7 +70,6 @@ def generate_latex_for_table(table, name):
 def generate_latex_from_dict(tables):
     max_cols = max(len(table['columns']) for table in tables.values())
     num_tables = len(tables)
-    print(max_cols)
 
     width = max_cols * 3  # adjust scaling factor as needed
     height = num_tables * 3.5  # adjust scaling factor as needed
@@ -80,7 +82,7 @@ def generate_latex_from_dict(tables):
     \\begin{document}"""
 
     __latex = latex_header
-    
+
     for name, table in tables.items():
         __latex += generate_latex_for_table(table, name)
         __latex += "\\par" + "\\par"
@@ -124,7 +126,6 @@ def parse_sql(sql_scripts):
                                 primary_keys.append(column_name)
                             else:
                                 combination = []
-                                print(len(col_parts))
                                 if len(col_parts) > 3:
                                     for i in range(2, len(col_parts)):
                                         combination.append(col_parts[i])
@@ -136,7 +137,6 @@ def parse_sql(sql_scripts):
                                 unique_keys.append(column_name)
                             else:
                                 combination = []
-                                print(len(col_parts))
                                 if len(col_parts) > 2:
                                     for i in range(1, len(col_parts)):
                                         combination.append(col_parts[i])
@@ -160,3 +160,62 @@ with open("sql.txt", "r") as f:
 
 tables = parse_sql(sql_scripts)
 generate_latex_from_dict(tables)
+
+
+# ask if user wants to generate additional latex code for arrows
+if input("Do you want to generate additional latex code for arrows? (y/n) ") == "y":
+    while True:
+        # ask for which table
+        table_name = input("Enter table name: ")
+        if table_name in tables:
+            # From column
+            from_col = input("Enter column name to draw arrow from: ")
+            while from_col not in tables[table_name]['columns']:
+                from_col = input("Column not found. Enter column name to draw arrow from: ")
+            # To columns, handle multiple columns
+            to_col = input("Enter column name to draw arrow to: ")
+            while to_col not in tables[table_name]['columns']:
+                to_col = input("Column not found. Enter column name to draw arrow to: ")
+            # # Direction
+            # direction = input("Enter direction (north/south): ")
+            # while direction != "north" and direction != "south":
+            #     direction = input("Invalid direction. Enter direction (north/south): ")
+            # # Offset
+            # offset = input("Enter offset: ")
+            # while not re.match(r"^\d+(\.\d+)?$", offset):
+            #     offset = input("Invalid offset. Enter offset: ")
+            
+            # Find table in output.txt
+            with open("output.txt", "r") as f:
+                latex = f.read()
+            table_index = latex.find(table_name)
+            if table_index == -1:
+                print("Table not found in output.txt")
+                continue
+            # Find the next \end{tikzpicture} after the table
+            end_index = latex.find("\\end{tikzpicture}", table_index)
+            if end_index == -1:
+                print("Table not found in output.txt")
+                continue
+            # Find the index of the line before \end{tikzpicture}
+            line_index = latex.rfind("\n", table_index, end_index)
+            if line_index == -1:
+                print("Table not found in output.txt")
+                continue
+            # Insert latex code for arrow
+            # check if primary key
+            if any(from_col in pk for pk in tables[table_name]['primary keys']):
+                latex = latex[:line_index] + draw_latex_arrows(tables[table_name]['columns'].index(from_col)+1, tables[table_name]['columns'].index(to_col)+1, 'south', 0.5) + latex[line_index:]
+            else:
+                latex = latex[:line_index] + draw_latex_arrows(tables[table_name]['columns'].index(from_col)+1, tables[table_name]['columns'].index(to_col)+1, 'north', 0.5+0.1*(tables[table_name]['columns'].index(from_col)+1)) + latex[line_index:]
+            # Write to output.txt
+            # Ask if user wants to save to output.txt
+            if input("Do you want to save to output.txt? (y/n) ") == "y":
+                with open("output.txt", "w") as f:
+                    f.write(latex)
+        else:
+            print("Table not found in sql.txt")
+            continue
+        if input("Do you want to add more arrows? (y/n) ") == "n":
+            break
+

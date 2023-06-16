@@ -1,4 +1,5 @@
-tables = {'Customers': {'columns': ['CustomerID', 'CustomerName', 'ContactName', 'Country', 'City', 'PostalCode'], 'primary keys': ['CustomerID'], 'unique keys': ['CustomerName', 'ContactName']}, 'Orders': {'columns': ['OrderID', 'CustomerID', 'OrderDate'], 'primary keys': ['OrderID'], 'unique keys': ['CustomerID']}, 'Orders2': {'columns': ['OrderID', 'CustomerID', 'OrderDate', 'test'], 'primary keys': ['OrderID'], 'unique keys': ['test', ['CustomerID', 'OrderDate']]}, 'Orders3': {'columns': ['OrderID', 'productID', 'OrderDate'], 'primary keys': [['OrderID', 'productID']], 'unique keys': []}, 'Orders4': {'columns': ['OrderID', 'productID', 'OrderDate'], 'primary keys': [['OrderID', 'productID']], 'unique keys': ['OrderDate']}, 'Orders5': {'columns': ['OrderID', 'productID'], 'primary keys': [['OrderID', 'productID']], 'unique keys': []}}
+tables = {'Customers': {'columns': ['CustomerID', 'CustomerName', 'ContactName', 'Country', 'City', 'PostalCode'], 'primary keys': ['CustomerID'], 'unique keys': ['CustomerName', 'ContactName'], 
+'foreign keys': []}, 'Orders': {'columns': ['OrderID', 'CustomerID', 'OrderDate'], 'primary keys': ['OrderID'], 'unique keys': ['CustomerID'], 'foreign keys': []}, 'Orders2': {'columns': ['OrderID', 'CustomerID', 'OrderDate', 'test'], 'primary keys': ['OrderID'], 'unique keys': ['test', ['CustomerID', 'OrderDate']], 'foreign keys': []}, 'Orders3': {'columns': ['OrderID', 'productID', 'OrderDate'], 'primary keys': [['OrderID', 'productID']], 'unique keys': [], 'foreign keys': []}, 'Orders4': {'columns': ['OrderID', 'productID', 'OrderDate'], 'primary keys': [['OrderID', 'productID']], 'unique keys': ['OrderDate'], 'foreign keys': []}, 'Orders5': {'columns': ['OrderID', 'productID'], 'primary keys': [['OrderID', 'productID']], 'unique keys': [], 'foreign keys': []}, 'Orders6': {'columns': ['OrderID', 'productID', 'PlaceID'], 'primary keys': ['OrderID'], 'unique keys': [], 'foreign keys': ['productID', 'PlaceID']}} 
 
 from num2words import num2words
 
@@ -29,7 +30,6 @@ def generate_latex_for_table(table, name):
 
     # Making LaTeX for arrows
     latex_arrows = ""
-    unique_key_counter = 0
     for i, col in enumerate(cols):
         # Draw arrows from primary keys to other non-primary key columns
         if any(col in pk for pk in table['primary keys']):
@@ -48,7 +48,6 @@ def generate_latex_for_table(table, name):
                 height = cols.index(unique_key[0])+1
                 for pk_index in primary_key_indices:
                     latex_arrows += draw_latex_arrows(cols.index(unique_key[i])+1, pk_index, 'north', 0.5+0.1*height)
-            unique_key_counter += 1
 
     # Combining everything
     latex_front = "\n\\textbf{" + name + "}\n\\par" + """\n\\begin{tikzpicture}[my shape/.style={

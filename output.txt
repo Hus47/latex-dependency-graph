@@ -241,6 +241,7 @@
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.five south);
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.six south);
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.seven south);
+\draw[-latex, very thick, black!70!black] (dedi.five north) -- ++(0,0.7) -| (dedi.one north);
 
 \end{tikzpicture}
 \par\par
@@ -373,8 +374,8 @@
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.two south);
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.three south);
 \draw[-latex, very thick, black!70!black] (dedi.one south) -- ++(0,-0.5) -| (dedi.four south);
-\draw[-latex, very thick, black!70!black] (dedi.four north) -- ++(0,0.9) -| (dedi.one north);
-\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.9) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.four north) -- ++(0,0.7) -| (dedi.one north);
+\draw[-latex, very thick, black!70!black] (dedi.two north) -- ++(0,0.7) -| (dedi.one north);
 
 \end{tikzpicture}
 \par\par

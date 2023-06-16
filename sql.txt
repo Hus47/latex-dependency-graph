@@ -91,7 +91,7 @@ CREATE TABLE Persona (
     Vārds nvarchar(50) NOT NULL,
     Uzvārds nvarchar(50) NOT NULL,
     DzimšanasDatums date NOT NULL,
-    EPasts nvarchar(100) NOT NULL,
+    EPasts nvarchar(100) NOT NULL UNIQUE,
     Parole nvarchar(100) NOT NULL,
 	NorēķinuAdreseID int NOT NULL FOREIGN KEY REFERENCES NorēķinuAdrese(ID)
 );
